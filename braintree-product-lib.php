@@ -3,7 +3,8 @@ require_once 'braintree-lib/lib/Braintree.php';
 
 class Braintree_Product {
     public function __construct($config, $price = 0){
-        // DO NOT store .ini files in public web root! to bypass figuring that out (if you're hella lazy), remove $config as a parameter and hardcode your values into this short section
+        // DO NOT store .ini files in public web root! to bypass figuring that out (if you're hella lazy)
+        // remove $config as a parameter and hardcode your values into this short section
         $parsed = parse_ini_file($config, TRUE);
         Braintree_Configuration::environment( $parsed['environment']);
         Braintree_Configuration::merchantId(  $parsed['merchantId'] );
@@ -11,7 +12,10 @@ class Braintree_Product {
         Braintree_Configuration::privateKey(  $parsed['privateKey'] );
         
         if($price > 0){
-            $post_inputs = json_decode(file_get_contents('php://input'),true); //angular doesnt like php's $_POST something something http://stackoverflow.com/questions/19254029/angularjs-http-post-does-not-send-data
+            // angular doesnt like php's $_POST something something 
+            // http://stackoverflow.com/questions/19254029/angularjs-http-post-does-not-send-data
+            $post_inputs = json_decode(file_get_contents('php://input'),true); 
+            
             
             $result = Braintree_Transaction::sale(array(
                 'amount' => $price,

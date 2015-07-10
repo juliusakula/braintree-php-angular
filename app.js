@@ -33,12 +33,12 @@ angular.module('myApp', ['braintree-angular'])
     });
     
     $scope.payButtonClicked = function(orderId) {
-      // - Validate $scope.creditCard
-      // - Make sure client is ready to use
-      client.tokenizeCard({
+        // - Validate $scope.creditCard
+        // - Make sure client is ready to use
+        client.tokenizeCard({
         number: $scope.creditCard.number,
         expirationDate: $scope.creditCard.expirationDate
-      }, function (err, nonce) {
+        }, function (err, nonce) {
         // - Send nonce to your server (e.g. to make a transaction)
         $scope.processing = true;
             $http.post('braintree-product.php', { 
@@ -78,7 +78,7 @@ angular.module('myApp', ['braintree-angular'])
             }).error(function(data, status, headers, config) {
               console.log("AJAX failed!");
             });
-      });
+        });
     };
     startup();
 })
