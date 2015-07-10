@@ -1,5 +1,5 @@
 angular.module('myApp', ['braintree-angular'])
-.constant('clientTokenPath', 'braintree-client-token.php')
+.constant('clientTokenPath', 'php/braintree-client-token.php')
 .controller('paymentsCtrl', function($scope, $braintree, $http, $timeout){
     $scope.submitted = false;
     $scope.$watch('submitted', function(newVal, oldVal){
@@ -41,7 +41,7 @@ angular.module('myApp', ['braintree-angular'])
         }, function (err, nonce) {
         // - Send nonce to your server (e.g. to make a transaction)
         $scope.processing = true;
-            $http.post('braintree-product.php', { 
+            $http.post('php/braintree-product.php', { 
               first_name: $scope.customer.first_name,
               last_name: $scope.customer.last_name,
               email: $scope.customer.email,
