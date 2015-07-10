@@ -1,0 +1,84 @@
+.loading-spinner {
+    background: url(/img/ajax.gif) 95% 50% no-repeat;
+}
+
+form {
+    width: 50%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 767px) {
+    form {
+        width: 75%
+    }
+}
+
+
+/* credit : http://codepen.io/paulrose/pen/mEGLg */
+.form-item label {
+  position: absolute;
+  top: 12px;
+  left: 17px;
+  padding: 0 2px;
+  line-height: 20px;
+  font-size: 14px;
+  letter-spacing: .125em;
+  color: #999;
+  pointer-events: none;
+  -webkit-transform-origin: left center;
+      -ms-transform-origin: left center;
+          transform-origin: left center;
+  -webkit-transform: translateY(0) scale(1);
+      -ms-transform: translateY(0) scale(1);
+          transform: translateY(0) scale(1);
+   
+}           
+.label-border-move {
+  display:inline-block; 
+  top:18px;
+  background:#fff;
+}
+.form-item label {
+    opacity: 1.0; 
+    background-color:#ffffff;
+}
+.form-item {
+  position: relative;
+  margin-bottom: .5em;
+}
+.form-item label, .form-item input, .form-item select, .form-item.copy{
+  display: inline-block;
+  -webkit-transition: all 150ms;
+          transition: all 150ms;
+}
+.form-item input, .form-item select, input[type=submit], .form-item.copy {
+  margin-top: 5px;
+  padding: 6px 15px;
+  border: 1px solid #999;
+  line-height: 20px;
+  font-size: 14px;
+  color: #222;
+  width: 100%;
+  box-sizing: border-box;
+}
+.form-item input:valid + label, .form-item .ng-dirty + label {
+  color: #999;
+  -webkit-transform: translateY(-17px) scale(0.75);
+      -ms-transform: translateY(-17px) scale(0.75);
+          transform: translateY(-17px) scale(0.75);
+}
+.form-item input:focus + label, .form-item select:focus + label {
+  color: #999;
+  -webkit-transform: translateY(-17px) scale(0.75);
+      -ms-transform: translateY(-17px) scale(0.75);
+          transform: translateY(-17px) scale(0.75);
+}
+.form-item input:focus, .form-item select:focus {
+  outline: none;
+  box-shadow: inset 0 -0.25em 0.5em #e5f0ff;
+  border-color: #06f;
+}
+.form-item input:focus + label, .form-item input:hover + label, .form-item select:hover + label, .form-item select:focus + label {
+  color: #06f;
+}

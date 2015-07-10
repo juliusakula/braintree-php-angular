@@ -1,0 +1,95 @@
+<html>
+<head>
+    <title>Airworthiness Standards</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
+    <meta name="description" content="Braintree PHP Angular Github">
+    <meta name="author" content="Justin Murdock">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="node_modules/angular-builds/angular.min.js"></script>
+    <!-- braintree payment stuff https://developers.braintreepayments.com/javascript+php/guides/overview 
+         braintree angular module https://github.com/jeffcarp/braintree-angular -->
+    <script src='node_modules/braintree-web/dist/braintree.js'></script>
+    <script src='node_modules/braintree-angular/dist/braintree-angular.js'></script>
+    
+    <script src='node_modules/alertifyjs/build/alertify.js'></script>
+    <link rel="stylesheet" href="node_modules/alertifyjs/build/css/alertify.min.css">
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        
+    <link rel="stylesheet" href="main.css">
+    <script src="app.js"></script>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="paymentsCtrl" style="width:100%;">
+        <form>
+            <h3 class="text-center text-muted">Your Information</h3>
+            <div class="form-item">
+                <input type="text" name="first_name" id="first_name"
+                ng-required="true"
+                ng-model="customer.first_name"/>
+                <label for="first_name">First Name</label>
+            </div>
+
+            <div class="form-item">
+                <input type="text" name="last_name" id="last_name"
+                ng-required="true"
+                ng-model="customer.last_name"/>
+                <label for="last_name">Last Name</label>
+            </div>
+
+            <div class="form-item">
+                <input type="text" name="email" id="email"
+                ng-required="true"
+                ng-model="customer.email"/>
+                <label for="email">Email</label>
+            </div>
+
+            <div class="form-item">
+                <input type="text" name="company" id="company"
+                ng-required="true"
+                ng-model="customer.company"/>
+                <label for="company">Company</label>
+            </div>
+
+            <hr>
+            <h3 class="text-center text-muted">Billing Information</h3>
+
+            <div class="form-item">
+                <input type="text" name="creditCardCardholderName" id="creditCardCardholderName"
+                ng-required="true"
+                ng-model="creditCard.cardholderName"/>
+                <label for="creditCardCardholderName">Card Holder Name</label>
+            </div>
+
+            <div class="form-item">
+                <input type="text" name="creditCardNumber" id="creditCardNumber"
+                ng-required="true" format-card
+                ng-model="creditCard.number"/>
+                <label for="creditCardNumber">Credit Card Number</label>
+            </div>
+
+            <div class="form-item">
+                <input type="text" name="creditCardExpirationDate" id="expirationDate"
+                ng-required="true"
+                ng-model="creditCard.expirationDate"/>
+                <label for="creditCardExpirationDate">Expiration Date MM/YY</label>
+            </div>
+
+            <div class="form-item">
+                <input type="text" name="creditCardCVV" id="creditCardCVV"
+                ng-required="true"
+                ng-model="creditCard.cvv"/>
+                <label for="creditCardCVV">CVV</label>
+            </div>
+            <br>
+            <h3 class="text-muted text-center">Price: $50</h3>
+            <h5 class="text-muted text-center">Expect your account to be billed immediately</h5>
+            <input type="submit" class="btn btn-block big-dark-blue-btn" value="{{submitButtonText}}" 
+            ng-click="payButtonClicked('OrderIDGithub')" ng-class="{'loading-spinner': processing}"
+            ng-disabled="duplicatePreventer" />
+        </form>
+    </div>
+</body>
+</html>
